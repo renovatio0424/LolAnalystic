@@ -1,3 +1,20 @@
 <resources>
-    <string name="app_name">LolAnalystic</string>
+    <string name="app_name" translatable="false">LoLAnalytics</string>
+    <string name="mock_app_name" translatable="false">MockLoLAnalytics</string>
+    <string name="empty">비어 있음</string>
+    <string name="enter_summoner_name">소환사 이름을 입력하세요</string>
+    <string name="search">SEARCH</string>
+    <string name="bad_request">Bad Request</string>
+    <string name="unauthorized">Unauthorized</string>
+    <string name="forbidden">접근 금지 되었습니다</string>
+    <string name="method_not_allowed">접근이 허가 되지 않은 함수입니다</string>
+    <string name="unsupported_media_type">지원하지 않는 미디어 타입입니다</string>
+    <string name="rate_limit_exceeded">요청 제한을 초과했습니다</string>
+    <string name="internal_server_error">서버 에러입니다</string>
+    <string name="service_unavailable">사용할 수 없는 서비스입니다</string>
+    <string name="bad_gateway">Bad gateway</string>
+    <string name="gateway_timeout">gateway timeout</string>
+    <string name="unknown_error_code">알수 없는 에러코드입니다</string>
+    <string name="data_not_found">존재하지 않는 소환사 이름입니다</string>
+    <string name="loading">Loading ...</string>
 </resources>
