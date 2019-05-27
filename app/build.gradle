@@ -53,7 +53,10 @@ android {
         jcenter()
     }
 
-    testOptions.unitTests.includeAndroidResources = true
+    testOptions {
+        unitTests.includeAndroidResources = true
+        unitTests.returnDefaultValues = true
+    }
 }
 
 dependencies {
@@ -79,9 +82,6 @@ dependencies {
     implementation 'org.koin:koin-android:2.0.0-rc-2'
     testImplementation 'org.koin:koin-test:2.0.0-rc-2'
 
-    // picasso
-    implementation "com.squareup.picasso:picasso:2.5.2"
-
     // retrofit
     implementation "com.squareup.retrofit2:retrofit:2.5.0"
     implementation "com.squareup.retrofit2:converter-gson:2.5.0"
@@ -98,9 +98,9 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
     androidTestImplementation "androidx.test.espresso:espresso-intents:3.1.1"
 
-    //material-dialog
-    implementation 'com.afollestad.material-dialogs:core:2.8.1'
-
     //in-app update
-    implementation 'com.google.android.play:core:1.5.0'
+    implementation 'com.google.android.play:core:1.6.0'
+
+    //gson
+    implementation 'com.google.code.gson:gson:2.8.5'
 }

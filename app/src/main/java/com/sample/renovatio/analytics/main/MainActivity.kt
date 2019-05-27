@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     }
 
     private val presenter: MainContract.Presenter by inject { parametersOf(this) }
+    private var summonerData: SummonerDTO? = null
 
     private val loadingDialog: AppCompatDialog by lazy {
         AlertDialog.Builder(this)
@@ -50,7 +51,10 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     }
 
     private fun moveToMyMatchListActivity() {
-        startActivity(Intent(this, MatchListActivity::class.java))
+        if (summonerData == null)
+            showSnackbar(R.string.error_search)
+        else
+            MatchListActivity.show(this, summonerData!!.accountId)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

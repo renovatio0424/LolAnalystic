@@ -3,7 +3,7 @@ package com.sample.renovatio.analytics.Main
 import com.sample.renovatio.analytics.main.MainContract
 import com.sample.renovatio.analytics.main.MainPresenter
 import com.sample.renovatio.analytics.model.DataModel.SummonerDTO
-import com.sample.renovatio.analytics.model.MockSummonerRepositoryImpl
+import com.sample.renovatio.mock.model.MockSummonerRepositoryImpl
 import io.reactivex.Scheduler
 import io.reactivex.Single
 import io.reactivex.android.plugins.RxAndroidPlugins
@@ -84,7 +84,7 @@ class MainPresenterTest : KoinTest {
         mockPresenter.getSummonerData(mockSummonerData.name)
 
         // then
-        // 5. mockData 와 일치하게 가져오는가?
+        // 5. showSummonerDataOnResultText 호출하는가?
         Mockito.verify(mockActivity, Mockito.times(1)).showSummonerDataOnResultText(mockSummonerData)
     }
 

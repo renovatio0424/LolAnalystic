@@ -1,7 +1,7 @@
 package com.sample.renovatio.mock.model
 
-import com.sample.renovatio.mock.Main.MainContract
-import com.sample.renovatio.mock.Model.DataModel.SummonerDTO
+import com.sample.renovatio.analytics.main.MainContract
+import com.sample.renovatio.analytics.model.DataModel.SummonerDTO
 import io.reactivex.Single
 import io.reactivex.Single.error
 import okhttp3.MediaType

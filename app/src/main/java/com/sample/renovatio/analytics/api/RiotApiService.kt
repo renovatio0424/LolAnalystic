@@ -8,7 +8,7 @@ import retrofit2.http.Path
 
 interface RiotApiService {
     companion object {
-        const val RIOT_API_KEY = "RGAPI-d064b513-f259-4ddd-88b5-1582e8c2374a"
+        const val RIOT_API_KEY = "RGAPI-71debac4-4e4c-4daa-8356-4a52811b63e2"
     }
 
     @GET("/lol/summoner/v4/summoners/by-name/{summonerName}?api_key=$RIOT_API_KEY")

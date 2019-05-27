@@ -1,16 +1,16 @@
 package com.sample.renovatio.analytics.match_list
 
 import com.sample.renovatio.analytics.model.DataModel.MatchListDTO
-import com.sample.renovatio.analytics.model.DataModel.SummonerDTO
 import io.reactivex.Single
 
 interface MatchListContract {
     interface View {
-
+        fun setMatchListView(matchListDTO: MatchListDTO)
     }
 
     interface Presenter {
-        fun searchMatchList(summonerDTO: SummonerDTO)
+        fun searchMatchList(accountId: String)
+        fun unsubscribe()
     }
 
     interface Repository {
