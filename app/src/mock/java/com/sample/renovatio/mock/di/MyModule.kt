@@ -3,6 +3,7 @@ package com.sample.renovatio.mock.di
 import com.sample.renovatio.analytics.api.RiotApiService
 import com.sample.renovatio.analytics.main.MainContract
 import com.sample.renovatio.analytics.main.MainPresenter
+import com.sample.renovatio.analytics.match_list.MatchListAdapter
 import com.sample.renovatio.analytics.match_list.MatchListContract
 import com.sample.renovatio.analytics.match_list.MatchListPresenter
 import com.sample.renovatio.mock.model.MockMatchListRepositoryImpl
@@ -30,7 +31,8 @@ var mainModule = module {
 
 var matchListModule = module {
     factory<MatchListContract.Repository> { MockMatchListRepositoryImpl() }
-    factory<MatchListContract.Presenter> { (view: MatchListContract.View) -> MatchListPresenter(view, get()) }
+    factory { MatchListAdapter() }
+    factory<MatchListContract.Presenter> { (view: MatchListContract.View, adapter:MatchListAdapter) -> MatchListPresenter(view, adapter, get()) }
 }
 
 var myDiModule = listOf(

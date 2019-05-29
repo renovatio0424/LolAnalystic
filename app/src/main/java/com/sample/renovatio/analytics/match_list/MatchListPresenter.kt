@@ -4,7 +4,11 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class MatchListPresenter(val view: MatchListContract.View, val repository: MatchListContract.Repository) : MatchListContract.Presenter {
+class MatchListPresenter(
+    private val view: MatchListContract.View,
+    private val adapterView: MatchListAdapter,
+    private val repository: MatchListContract.Repository
+) : MatchListContract.Presenter {
     private var compositeDisposable: CompositeDisposable = CompositeDisposable()
 
     override fun unsubscribe() {
@@ -17,8 +21,8 @@ class MatchListPresenter(val view: MatchListContract.View, val repository: Match
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
             .subscribe({
-                view.setMatchListView(it)
-            },{
+                adapterView.addItems(it)
+            }, {
                 TODO("not implemented")
             })
 

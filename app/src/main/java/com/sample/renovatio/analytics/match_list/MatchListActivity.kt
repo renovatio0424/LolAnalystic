@@ -4,20 +4,24 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.sample.renovatio.analytics.R
 import com.sample.renovatio.analytics.model.DataModel.MatchListDTO
 import kotlinx.android.synthetic.main.activity_matchlist.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
+
+/**
+ *  <Flow>
+ *  View    --> presenter -> Model
+ *  Adapter /
+ * */
 class MatchListActivity : AppCompatActivity(), MatchListContract.View {
-    private val presenter: MatchListContract.Presenter by inject { parametersOf(this) }
+    private val adapter: MatchListAdapter by inject()
+    private val presenter: MatchListContract.Presenter by inject { parametersOf(this, adapter) }
 
     private lateinit var accountId: String
-
-    override fun setMatchListView(matchListDTO: MatchListDTO) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,8 +33,8 @@ class MatchListActivity : AppCompatActivity(), MatchListContract.View {
     }
 
     private fun initMatchList() {
-//        TODO
-//        rv_match_list.adapter =
+        rv_match_list.layoutManager = LinearLayoutManager(this)
+        rv_match_list.adapter = /*MatchListAdapter()*/adapter
     }
 
     override fun onStop() {

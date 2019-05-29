@@ -1,7 +1,5 @@
 package com.sample.renovatio.analytics.model.DataModel
 
-import java.util.Arrays.asList
-
 data class MatchReferenceDTO(
     val champion: Int,
     val gameId: Long,
@@ -21,7 +19,7 @@ data class MatchReferenceDTO(
 
 data class MatchListDTO(
     val endIndex: Int,
-    val matches: List<MatchReferenceDTO>,
+    val matches: ArrayList<MatchReferenceDTO>,
     val startIndex: Int,
     val totalGames: Int
 ) {
@@ -29,7 +27,7 @@ data class MatchListDTO(
         fun createMockDTO(): MatchListDTO {
             return MatchListDTO(
                 100,
-                asList(
+                arrayListOf(
                     MatchReferenceDTO.createMockDTO(),
                     MatchReferenceDTO.createMockDTO(),
                     MatchReferenceDTO.createMockDTO(),

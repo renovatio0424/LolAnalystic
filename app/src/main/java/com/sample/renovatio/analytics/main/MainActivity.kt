@@ -1,8 +1,10 @@
 package com.sample.renovatio.analytics.main
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDialog
@@ -106,7 +108,14 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     }
 
     override fun showSummonerDataOnResultText(summonerData: SummonerDTO) {
+        this.summonerData = summonerData
         main_activity_search_text_view?.text = summonerData.toString()
+        hideKeyboard()
+    }
+
+    private fun hideKeyboard() {
+        val inputManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputManager.hideSoftInputFromWindow(main_activity_search_text_view.windowToken, 0)
     }
 
     override fun onStop() {

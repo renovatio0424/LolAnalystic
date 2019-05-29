@@ -7,6 +7,7 @@ import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.disposables.Disposable
 import io.reactivex.internal.schedulers.ExecutorScheduler
 import io.reactivex.plugins.RxJavaPlugins
+import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito
@@ -17,6 +18,7 @@ class MatchListPresenterTest {
 
     private lateinit var mockActivity: MatchListContract.View
     private lateinit var mockPresenter: MatchListPresenter
+    private lateinit var mockAdapter: MatchListAdapter
     private lateinit var mockRepository: MatchListContract.Repository
     private val mockMatchListDTO: MatchListDTO = MatchListDTO.createMockDTO()
 
@@ -24,7 +26,8 @@ class MatchListPresenterTest {
     fun setUp() {
         mockActivity = Mockito.mock(MatchListContract.View::class.java)
         mockRepository = MockMatchListRepositoryImpl()
-        mockPresenter = MatchListPresenter(mockActivity, mockRepository)
+        mockAdapter = Mockito.mock(MatchListAdapter::class.java)
+        mockPresenter = MatchListPresenter(mockActivity, mockAdapter, mockRepository)
 
         val immediate = object : Scheduler() {
             override fun scheduleDirect(run: Runnable, delay: Long, unit: TimeUnit): Disposable {
@@ -56,6 +59,14 @@ class MatchListPresenterTest {
         mockPresenter.searchMatchList(accountId)
 
         //then
-        Mockito.verify(mockActivity, Mockito.times(1)).setMatchListView(mockMatchListDTO)
+        Mockito.verify(mockAdapter, Mockito.times(1)).addItems(mockMatchListDTO)
+    }
+
+    @Test
+    fun addItems_success_case(){
+        //given & when
+        mockAdapter.addItems(mockMatchListDTO)
+        //then
+        Assert.assertEquals(mockAdapter.itemCount, mockMatchListDTO.matches.size)
     }
 }
